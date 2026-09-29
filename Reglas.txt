@@ -1,0 +1,11 @@
+## contexto 
+- es una pagina para mostra casas y indrmacion de contacto y nosotros
+## sections
+- secciones sobre mi , para cada casa con las fotos , descripcion, y precio
+- seccion de casas cada una tiene una descripcion , un book de fotos , la ubicaion de maps y el precio al final
+## intro
+bienvenida con fondo de fotos para fondos texto de introduccion 
+
+## stack tecnologico
+- Angular
+- Google maps

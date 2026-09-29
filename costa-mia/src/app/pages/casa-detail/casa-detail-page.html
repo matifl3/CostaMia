@@ -1,0 +1,77 @@
+@if (casa(); as casa) {
+  <section class="detalle-casa">
+    <div class="detalle-casa__barra">
+      <a class="detalle-casa__volver" routerLink="/casas">← Volver a las casas</a>
+      <span class="detalle-casa__precio-pill">{{ casa.precio }}</span>
+    </div>
+
+    <h1 class="detalle-casa__titulo">{{ casa.nombre }}</h1>
+    <p class="detalle-casa__subtitulo">{{ casa.direccion }}</p>
+
+    <div class="galeria">
+      <div class="galeria__principal">
+        @if (actual(); as media) {
+          @if (media.type === 'foto') {
+            <img [src]="media.src" [alt]="casa.nombre" />
+          } @else {
+            <video [src]="media.src" controls playsinline autoplay></video>
+          }
+        }
+        @if ((casa.galeria.length) > 1) {
+          <button class="galeria__flecha galeria__flecha--izq" (click)="anterior()" aria-label="Anterior">‹</button>
+          <button class="galeria__flecha galeria__flecha--der" (click)="siguiente()" aria-label="Siguiente">›</button>
+        }
+      </div>
+
+      <div class="galeria__miniaturas">
+        @for (media of casa.galeria; track media.src; let i = $index) {
+          <button
+            class="galeria__mini"
+            [class.galeria__mini--activo]="i === indice()"
+            (click)="elegirMedia(i)"
+            [attr.aria-label]="'Ver foto ' + (i + 1)"
+          >
+            @if (media.type === 'video') {
+              <span class="galeria__mini-play">▶</span>
+            }
+            <img [src]="media.src" [alt]="casa.nombre + ' ' + (i + 1)" />
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="detalle-casa__bloques">
+      <div class="detalle-casa__bloque">
+        <h2>Descripción</h2>
+        @for (parrafo of casa.descripcion; track $index) {
+          <p>{{ parrafo }}</p>
+        }
+      </div>
+
+      <div class="detalle-casa__bloque">
+        <h2>Ubicación</h2>
+        <div class="detalle-casa__mapa">
+          @if (mapaUrl(); as url) {
+            <iframe [src]="url" width="100%" height="100%" style="border: 0" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          }
+        </div>
+        <p class="detalle-casa__direccion">{{ casa.direccion }}</p>
+      </div>
+
+      <div class="detalle-casa__bloque detalle-casa__precio">
+        <h2>Precio</h2>
+        <p class="detalle-casa__monto">{{ casa.precio }}</p>
+        <p>Consultá disponibilidad y formas de pago sin compromiso.</p>
+        <a class="sec-btn" [href]="whatsapp()" target="_blank" rel="noopener">
+          Reservar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="no-encontrada">
+    <h1>Casa no encontrada</h1>
+    <a class="sec-btn" routerLink="/casas">Ver todas las casas</a>
+  </section>
+}

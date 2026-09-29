@@ -1,0 +1,32 @@
+<section class="contacto-head">
+  <div class="contacto-head__foto" style="background-image: url('assets/backgrounds/fondo-01.jpg')"></div>
+  <div class="contacto-head__capa"></div>
+  <div class="contacto-head__contenido">
+    <h1>Contacto</h1>
+    <p>Escribinos y coordinemos tu próxima estadía.</p>
+  </div>
+</section>
+
+<section class="contacto-cuerpo">
+  <div class="contacto-cuerpo__info">
+    <div class="contacto-tarjeta">
+      <h2>Datos de contacto</h2>
+      <p><strong>WhatsApp:</strong> {{ contacto.whatsappMostrar }}</p>
+      <p><strong>Email:</strong> {{ contacto.email }}</p>
+      <p><strong>Dirección:</strong> {{ contacto.direccion }}</p>
+      <a class="sec-btn" [href]="whatsapp" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+
+    <div class="contacto-tarjeta">
+      <h2>Seguinos</h2>
+      <p>
+        <a [href]="contacto.instagram" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contacto-cuerpo__mapa">
+    <iframe [src]="mapaUrl" width="100%" height="100%" style="border: 0" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+</section>

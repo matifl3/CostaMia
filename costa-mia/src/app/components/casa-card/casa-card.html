@@ -1,0 +1,13 @@
+<article class="casa-card">
+  <a class="casa-card__link" [routerLink]="['/casas', casa().id]">
+    <div class="casa-card__portada" style="background-image: url('{{ casa().portada }}')"></div>
+    <div class="casa-card__cuerpo">
+      <h3 class="casa-card__nombre">{{ casa().nombre }}</h3>
+      <p class="casa-card__descripcion">{{ casa().descripcionCorta }}</p>
+      <div class="casa-card__pie">
+        <span class="casa-card__precio">{{ casa().precio }}</span>
+        <span class="casa-card__cta">Ver casa →</span>
+      </div>
+    </div>
+  </a>
+</article>

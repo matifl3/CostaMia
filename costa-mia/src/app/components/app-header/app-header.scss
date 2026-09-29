@@ -1,0 +1,108 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1rem, 4vw, 3rem);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(10, 40, 70, 0.15);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--color-marino);
+  }
+
+  &__logo {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: 0 1px 4px rgba(10, 40, 70, 0.2);
+  }
+
+  &__nombre {
+    font-family: var(--font-titulo);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+  }
+
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0.4rem;
+
+    span {
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--color-marino);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.75rem;
+
+    a {
+      text-decoration: none;
+      color: var(--color-texto);
+      font-weight: 600;
+      padding: 0.35rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover,
+      &--activo {
+        color: var(--color-acento);
+        border-bottom-color: var(--color-acento);
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .header {
+    &__toggle {
+      display: flex;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: #fff;
+      box-shadow: 0 10px 20px rgba(10, 40, 70, 0.15);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+
+      &--abierto {
+        max-height: 400px;
+      }
+
+      a {
+        padding: 0.9rem clamp(1rem, 4vw, 3rem);
+        border-bottom: 1px solid var(--color-arena-suave);
+      }
+    }
+  }
+}

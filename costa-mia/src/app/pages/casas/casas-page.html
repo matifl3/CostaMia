@@ -1,0 +1,16 @@
+<section class="casas-head">
+  <div class="casas-head__foto" style="background-image: url('assets/backgrounds/fondo-03.jpg')"></div>
+  <div class="casas-head__capa"></div>
+  <div class="casas-head__contenido">
+    <h1>Nuestras casas</h1>
+    <p>Catálogo completo de propiedades en Santa Clara del Mar.</p>
+  </div>
+</section>
+
+<section class="casas">
+  <div class="casas__grilla">
+    @for (casa of casas; track casa.id) {
+      <casa-card [casa]="casa" />
+    }
+  </div>
+</section>

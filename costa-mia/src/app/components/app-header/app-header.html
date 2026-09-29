@@ -1,0 +1,22 @@
+<header class="header">
+  <a class="header__brand" routerLink="/" (click)="cerrarMenu()">
+    <img class="header__logo" src="assets/logo.png" alt="Logo Costa Mia Propiedades" />
+    <span class="header__nombre">Costa Mia<br />Propiedades</span>
+  </a>
+
+  <button
+    class="header__toggle"
+    [attr.aria-expanded]="menuAbierto"
+    aria-label="Abrir menú"
+    (click)="toggleMenu()"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="header__nav" [class.header__nav--abierto]="menuAbierto" aria-label="Navegación principal">
+    <a routerLink="/" routerLinkActive="header__link--activo" [routerLinkActiveOptions]="{ exact: true }" (click)="cerrarMenu()">Inicio</a>
+    <a routerLink="/casas" routerLinkActive="header__link--activo" (click)="cerrarMenu()">Casas</a>
+    <a routerLink="/nosotros" routerLinkActive="header__link--activo" (click)="cerrarMenu()">Nosotros</a>
+    <a routerLink="/contacto" routerLinkActive="header__link--activo" (click)="cerrarMenu()">Contacto</a>
+  </nav>
+</header>
